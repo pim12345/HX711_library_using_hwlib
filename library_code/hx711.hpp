@@ -1,6 +1,7 @@
 #ifndef HX711_HPP
 #define HX711_HPP
 #include "hwlib.hpp"
+#include "array"
 
 class hx711 {
 protected:
@@ -16,6 +17,7 @@ public:
 
     void setup();
     void read();
+    void test();
 
 };
 

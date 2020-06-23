@@ -9,10 +9,10 @@
 #############################################################################
 
 # source files in this project (main.cpp is automatically assumed)
-SOURCES :=
+SOURCES := ../library_code/hx711.cpp
 
 # header files in this project
-HEADERS := 
+HEADERS := ../library_code/hx711.hpp
 
 # other places to look for files for this project
 SEARCH  :=
