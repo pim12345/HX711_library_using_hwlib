@@ -33,9 +33,10 @@
 
 
 # Linker files hwlib
-Makefile.due
+#Makefile.due
 Makefile.link
 Makefile.native
+makefile.mfd
 
 
 # Compailer files
@@ -44,4 +45,7 @@ main.elf
 main.ld
 main.map
 bmptk_fixed_size_stack.c
+
+# andere dingen 
+./proberen/
 

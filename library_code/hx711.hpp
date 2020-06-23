@@ -6,6 +6,7 @@ class hx711 {
 protected:
   hwlib::pin_out & SCK;
   hwlib::pin_in  & DT;
+  void clock();
 
 public:
   hx711(hwlib::pin_out & SCK, hwlib::pin_in  & DT ):
@@ -13,8 +14,8 @@ public:
   DT( DT )
   {}
 
+    void setup();
     void read();
-    
 
 };
 
