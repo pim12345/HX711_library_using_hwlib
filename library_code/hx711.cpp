@@ -12,13 +12,6 @@ void hx711::clock(){
 
 
 
-//int bin_to_decimal(){
-
-
-//}
-
-
-
 void hx711::setup(){
   int array_bits [25];
   DT.refresh();
@@ -42,14 +35,13 @@ void hx711::setup(){
 
 
 
-int * hx711::read(){
+int hx711::read(){
   static int array_bits [24];
   //uint32_t bits = 0;
   //uint32_t temp = 0;
   DT.refresh();
   while(DT.read() == 1){
     DT.refresh();
-
   }
 
   for (int i=0; i<24; i++){
@@ -62,29 +54,50 @@ int * hx711::read(){
 
   }
   clock();
+
+  //for converting binary to decimal number is used this tutorial for idea for code: https://nl.wikihow.com/Van-een-binair-getal-een-decimaal-getal-maken.
   int result = 0;
   for(int k=0; k<24; k++){
     if (array_bits[k] == 1){
       int macht = pow((k+1), 2);
       result += (macht * 1);
     }
-
   }
-  hwlib::cout << result << hwlib::endl;
 
+  return result;
 
-  //uint24_t value = 0;
-  //for (unsigned int i=0; i<=24; i++){
-  //  uint24_t temp = array_bits[i];
-  //  value = value << 1;
-  //  value =
-  //}
-  return array_bits;
-  //hwlib::cout << hwlib::hex(24) << hwlib::endl;
 
 }
 
 
-void hx711::test(){
-  clock();
+int hx711::read_avg_10(){
+    int result1 = read();
+    int result2 = read();
+    int result3 = read();
+    int result4 = read();
+    int result5 = read();
+    int result6 = read();
+    int result7 = read();
+    int result8 = read();
+    int result9 = read();
+    int result10 = read();
+    int sum = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10;
+    return (sum / 10);
+}
+
+
+int hx711::read_avg_100(){
+  int result1 = read_avg_10();
+  int result2 = read_avg_10();
+  int result3 = read_avg_10();
+  int result4 = read_avg_10();
+  int result5 = read_avg_10();
+  int result6 = read_avg_10();
+  int result7 = read_avg_10();
+  int result8 = read_avg_10();
+  int result9 = read_avg_10();
+  int result10 = read_avg_10();
+  int sum = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10;
+  return (sum / 100);
+
 }

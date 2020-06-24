@@ -8,7 +8,7 @@ protected:
   hwlib::pin_out & SCK;
   hwlib::pin_in  & DT;
   void clock();
-  int bin_to_decimal();
+  //int bin_to_decimal();
 
 public:
   hx711(hwlib::pin_out & SCK, hwlib::pin_in  & DT ):
@@ -17,8 +17,9 @@ public:
   {}
 
     void setup();
-    int * read();
-    void test();
+    int read();
+    int read_avg_10();
+    int read_avg_100();
 
 };
 
