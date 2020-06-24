@@ -16,6 +16,6 @@ int main( void ) {
 
     for (;;){
       weegschaal.read();
-      hwlib::wait_ms(500);
+      hwlib::wait_ms(200);
     }
 }

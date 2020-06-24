@@ -16,7 +16,7 @@ void hx711::setup(){
   DT.refresh();
   while(DT.read() == 1){
     DT.refresh();
-    hwlib::cout << "test" << '\n';
+    //hwlib::cout << "test" << '\n';
 
   }
 
@@ -27,9 +27,9 @@ void hx711::setup(){
 
   }
   clock();
-  for (int j=0; j<=24; j++){
-    hwlib::cout << array_bits[j] << hwlib::endl;
-  }
+  //for (int j=0; j<=24; j++){
+  //  hwlib::cout << array_bits[j] << hwlib::endl;
+  //}
 }
 
 
