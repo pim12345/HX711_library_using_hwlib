@@ -16,7 +16,7 @@ public:
   {}
 
     void setup();
-    void read();
+    int * read();
     void test();
 
 };

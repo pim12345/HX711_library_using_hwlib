@@ -34,8 +34,8 @@ void hx711::setup(){
 
 
 
-void hx711::read(){
-  int array_bits [25];
+int * hx711::read(){
+  static int array_bits [25];
   DT.refresh();
   while(DT.read() == 1){
     DT.refresh();
@@ -49,13 +49,8 @@ void hx711::read(){
 
   }
   clock();
-  for (int j=0; j<=24; j++){
-    hwlib::cout << array_bits[j];
-  }
+  return array_bits;
   //hwlib::cout << hwlib::hex(24) << hwlib::endl;
-  hwlib::cout << hwlib::endl;
-
-
 
 }
 

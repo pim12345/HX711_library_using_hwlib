@@ -13,9 +13,13 @@ int main( void ) {
     auto weegschaal = hx711(SCK, DT);
 
     weegschaal.setup();
-
+    int *weegschaal_resultaat;
     for (;;){
-      weegschaal.read();
-      hwlib::wait_ms(200);
+      weegschaal_resultaat = weegschaal.read();
+      for (int j=0; j<=24; j++){
+        hwlib::cout << weegschaal_resultaat[j];
+      }
+      hwlib::cout << hwlib::endl;
+      //hwlib::wait_ms(200);
     }
 }
