@@ -1,31 +1,18 @@
 #include "../library_code/hx711.hpp"
-#include <vector>
+//#include <vector>
 #include <array>
 
 
 int main( void ) {
-    hwlib::wait_ms(2000);
-    hwlib::cout << "begin" << '\n';
-    auto SCK = hwlib::target::pin_out( hwlib::target::pins::d10 );
-    auto DT = hwlib::target::pin_in( hwlib::target::pins::d6 );
+  namespace target = hwlib::target;
+  hwlib::wait_ms(2000);
 
-    auto weegschaal = hx711(SCK, DT);
-    DT.refresh();
-    while(DT.read() == 1){
-      DT.refresh();
-      hwlib::cout << "test" << '\n';
-    }
-    for (;;){
-      SCK.write(0);
-      SCK.flush();
-      SCK.write(1);
-      SCK.flush();
-      hwlib::wait_us(5);
-    }
+   auto scl = target::pin_oc( target::pins::scl );
+   auto sda = target::pin_oc( target::pins::sda );
 
+   auto i2c_bus = hwlib::i2c_bus_bit_banged_scl_sda( scl,sda );
 
-
-
+   i2c_bus.write_bit( 0x53 );
 
 
 
