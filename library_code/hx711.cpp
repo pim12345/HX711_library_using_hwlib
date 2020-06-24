@@ -63,8 +63,12 @@ int * hx711::read(){
   }
   clock();
   int result = 0;
-  for(int k=24; k>0; k--){
-    result+= pow(array_bits[k], k);
+  for(int k=0; k<24; k++){
+    if (array_bits[k] == 1){
+      int macht = pow((k+1), 2);
+      result += (macht * 1);
+    }
+
   }
   hwlib::cout << result << hwlib::endl;
 
