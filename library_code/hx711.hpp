@@ -3,7 +3,7 @@
 
 #include "hwlib.hpp"
 #include <array>
-#include <cmath>
+#include <cmath> //is used for squared calulations
 /// @file
 
 /// \brief
@@ -11,7 +11,9 @@
 /// \details
 /// This is a class that implements the reading of a hx711 chip.
 /// Hx711 datasheet: https://cdn.sparkfun.com/datasheets/Sensors/ForceFlex/hx711_english.pdf
-/// the class wil ask for 2 wires in the constructor: The data pin is the DT_pin (hwlib pin_in) and the clock pin SCK (hwlib pin_out).
+/// The class wil ask for 2 wires in the constructor:
+/// The data pin is the DT_pin (hwlib pin_in)
+/// And the clock pin SCK (hwlib pin_out).
 class hx711 {
 protected:
 

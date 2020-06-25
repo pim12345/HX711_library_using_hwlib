@@ -37,7 +37,7 @@ void hx711::setup(){
 
 int hx711::read(){
   uint32_t temp_read = 0;
-  static int array_bits [24];
+  int array_bits [24] = {};
   //bool is_negative = false;
   //uint32_t bits = 0;
   //uint32_t temp = 0;
