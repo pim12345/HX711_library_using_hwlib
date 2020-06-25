@@ -38,6 +38,7 @@ void hx711::setup(){
 int hx711::read(){
   uint32_t temp_read = 0;
   static int array_bits [24];
+  //bool is_negative = false;
   //uint32_t bits = 0;
   //uint32_t temp = 0;
   DT.refresh();
@@ -59,21 +60,29 @@ int hx711::read(){
   clock();
   //clock();
   if(temp_read<0){
-    temp_read = 0;
+    return 0;
+  }
+  if (temp_read > 0xFFFFFF){
+    return 0xFFFFFF;
   }
   hwlib::cout << temp_read << hwlib::endl;
 
   //for converting binary to decimal number is used this tutorial for idea for code: https://nl.wikihow.com/Van-een-binair-getal-een-decimaal-getal-maken.
   int result = 0;
   for(int k=0; k<24; k++){
-    //hwlib::cout << array_bits[k];
+    hwlib::cout << array_bits[k];
     if (array_bits[k] == 1){
+      if(array_bits[k] == (24-1)){
+
+        //int macht = pow((k+1), 2);
+        //result = result - (macht * 1);
+      }
       int macht = pow((k+1), 2);
       result += (macht * 1);
     }
 
   }
-  //hwlib::cout << hwlib::endl;
+  hwlib::cout << hwlib::endl;
 
   return result;
 
