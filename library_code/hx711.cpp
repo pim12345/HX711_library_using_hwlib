@@ -70,17 +70,21 @@ int hx711::read(){
   //for converting binary to decimal number is used this tutorial for idea for code: https://nl.wikihow.com/Van-een-binair-getal-een-decimaal-getal-maken.
   int result = 0;
   for(int k=0; k<24; k++){
-    hwlib::cout << array_bits[k];
-    if (array_bits[k] == 1){
-      if(array_bits[k] == (24-1)){
 
-        //int macht = pow((k+1), 2);
-        //result = result - (macht * 1);
-      }
+    if(array_bits[k] == 1 && k < 8){
+      int macht = pow((k+1), 2);
+     result = result - (macht * 1);
+     hwlib::cout << "result- " << result << hwlib::endl;
+    }
+    if (array_bits[k] == 1){
       int macht = pow((k+1), 2);
       result += (macht * 1);
+      hwlib::cout << "result+ " << result << hwlib::endl;
     }
+  }
 
+  for(int j=0; j<24; j++){
+  hwlib::cout << array_bits[j];
   }
   hwlib::cout << hwlib::endl;
 

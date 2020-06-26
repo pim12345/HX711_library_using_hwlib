@@ -36,7 +36,7 @@ int main( void ) {
     for (;;){
       //weegschaal_resultaat = weegschaal.read();
     //hwlib::cout << weegschaal.read_avg_10() << hwlib::endl;
-    weegschaal.read_avg_10();
+    weegschaal.read();
 
 
     //oled.clear();
