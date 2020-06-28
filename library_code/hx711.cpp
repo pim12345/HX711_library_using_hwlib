@@ -65,9 +65,9 @@ int hx711::read(){
   }
   clock();
   //clock();
-  if(temp_read<0){
-    return 0;
-  }
+  //if(temp_read<0){
+  //  return 0;
+  //}
   //if (temp_read > 0xFFFFFF){
   //  return 0xFFFFFF;
   //}
@@ -75,7 +75,6 @@ int hx711::read(){
 
   hwlib::cout << "bit before: "<< hwlib::endl;
   for(int g=0; g<24; g++){
-
   hwlib::cout << array_bits[g];
   }
   hwlib::cout << hwlib::endl;
@@ -83,37 +82,37 @@ int hx711::read(){
   //for converting binary to decimal number is used this tutorial for idea for code: https://nl.wikihow.com/Van-een-binair-getal-een-decimaal-getal-maken.
   int result = 0;
   bool is_negative = false;
-  if (array_bits[0] == 1){
+  hwlib::cout << "bit pos: temp:  " << read_bit(temp_read, 23) << hwlib::endl;
+  if (read_bit(temp_read, 23) == 1){
     is_negative = true;
-      for(int l=0; l<24; l++){ //flipping all the bits
-        if (array_bits[l] == 1){
-          array_bits[l] = 0;
-        }
-        else {
-          array_bits[l] = 1;
-        }
-      }
-      array_bits[24] = 1; // add one to binary number for converting two complement to binary
+    temp_read = ~temp_read; //invert all bits for conversion from two complement to decimal.
+    //temp_read++;// add one to binary number for converting two complement to binary
   }
-  for(int k=0; k<24; k++){
+  hwlib::cout << "final ans1:       " << temp_read << hwlib::endl;
 
-    //if(array_bits[k] == 1 && k == 0){
-     //int macht = pow(2, 2);
-     //result = result - (macht * 1);
+
+
+  for(int k=24; k>=0; k--){
+
+    if(array_bits[k] == 1 && k == 0){
+     int macht = pow(2, 24);
+     result = result - (macht * 1);
      //hwlib::cout << "result- " << result << hwlib::endl;
-    //}
+    }
     if (array_bits[k] == 1){
-      int macht = pow((k+1), 2);
-      result += (macht * 1);
-      hwlib::cout << "result+ " << result << hwlib::endl;
+      //hwlib::cout << "pow: " << (2) <<  "  " << (24-k-1) << hwlib::endl;
+      int macht = pow(2, (24-k-1));
+      //hwlib::cout << "macht:     " << macht << hwlib::endl;
+      result += macht;
+      //hwlib::cout << "result+ " << result << hwlib::endl;
     }
   }
 
-  for(int j=0; j<24; j++){
-  hwlib::cout << array_bits[j];
-  }
-  hwlib::cout << hwlib::endl;
-
+  //for(int j=0; j<24; j++){
+  //hwlib::cout << array_bits[j];
+  //}
+  //hwlib::cout << hwlib::endl;
+  hwlib::cout << "result end :     " << result << hwlib::endl;
   return result;
 
 
