@@ -30,6 +30,7 @@ protected:
   /// The data wire will be used by the read 's function's.
   hwlib::pin_in  & DT;
 
+
   /// \brief
   /// clock function
   /// \details
@@ -37,9 +38,12 @@ protected:
   /// The clock high times will be around 11.5 microsecond. (tested on arduino DUE).
   /// The clock low times wille around 9 microsecond. (tested on arduino DUE).
   void clock();
-  //int bin_to_decimal();
 
-  int read_bit(uint32_t bit, int position);
+
+
+  int calibration_number = 0;
+
+
 
 public:
 
@@ -51,7 +55,8 @@ public:
    /// with just a whole value.
   hx711(hwlib::pin_out & SCK, hwlib::pin_in  & DT ):
   SCK( SCK ),
-  DT( DT )
+  DT( DT ),
+  calibration_number( 0 )// calibration level will be set to right number after calibration_set is runned.
   {}
 
 
@@ -61,6 +66,10 @@ public:
    /// This function will communicate with te chip the first time. Because the chip expect to set a gain,
    /// (25 clock). the first time values will not be used.
     void setup();
+
+
+
+    int read_no_calibration();
 
 
 
@@ -93,6 +102,11 @@ public:
    /// The hx711 will recuire the need of load cells.
    /// In this library the gain will always be 128.
     int read_avg_100();
+
+
+    int get_calibration_number();
+
+    void calibration_set();
 
 };
 

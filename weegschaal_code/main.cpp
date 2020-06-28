@@ -14,8 +14,9 @@
 //}
 
 int main( void ) {
-    hwlib::wait_ms(2000);
+    hwlib::wait_ms(4000);
     hwlib::cout << "begin" << '\n';
+
     auto SCK = hwlib::target::pin_out( hwlib::target::pins::d10 );
     auto DT = hwlib::target::pin_in( hwlib::target::pins::d6 );
 
@@ -32,11 +33,18 @@ int main( void ) {
 
 
     weegschaal.setup();
+    hwlib::cout << "frist read 10:     " << weegschaal.read_avg_10() << hwlib::endl;
+    weegschaal.calibration_set();
+    hwlib::cout << "cal number: " << weegschaal.get_calibration_number() << hwlib::endl;
+
+    hwlib::cout << "read_10 second na cal number:     " << weegschaal.read_avg_10() << hwlib::endl;
+
     //int weegschaal_resultaat;
     for (;;){
       //weegschaal_resultaat = weegschaal.read();
     //hwlib::cout << weegschaal.read_avg_10() << hwlib::endl;
-    weegschaal.read();
+
+    hwlib::cout << "read_10:     " << weegschaal.read_avg_10() << hwlib::endl;
 
 
     //oled.clear();
