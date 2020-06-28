@@ -39,6 +39,8 @@ protected:
   void clock();
   //int bin_to_decimal();
 
+  int read_bit(uint32_t bit, int position);
+
 public:
 
    // \brief

@@ -10,7 +10,13 @@ void hx711::clock(){
   hwlib::wait_us(1);
 }
 
-
+int hx711::read_bit(uint32_t bit, int position){
+  int x = 0;
+  if (bit & (1 << position)){
+    x =1;
+  }
+  return x;
+}
 
 void hx711::setup(){
   int array_bits [25];
@@ -62,21 +68,41 @@ int hx711::read(){
   if(temp_read<0){
     return 0;
   }
-  if (temp_read > 0xFFFFFF){
-    return 0xFFFFFF;
+  //if (temp_read > 0xFFFFFF){
+  //  return 0xFFFFFF;
+  //}
+  //hwlib::cout << temp_read << hwlib::endl;
+
+  hwlib::cout << "bit before: "<< hwlib::endl;
+  for(int g=0; g<24; g++){
+
+  hwlib::cout << array_bits[g];
   }
-  hwlib::cout << temp_read << hwlib::endl;
+  hwlib::cout << hwlib::endl;
 
   //for converting binary to decimal number is used this tutorial for idea for code: https://nl.wikihow.com/Van-een-binair-getal-een-decimaal-getal-maken.
   int result = 0;
+  bool is_negative = false;
+  if (array_bits[0] == 1){
+    is_negative = true;
+      for(int l=0; l<24; l++){ //flipping all the bits
+        if (array_bits[l] == 1){
+          array_bits[l] = 0;
+        }
+        else {
+          array_bits[l] = 1;
+        }
+      }
+      array_bits[24] = 1; // add one to binary number for converting two complement to binary
+  }
   for(int k=0; k<24; k++){
 
-    if(array_bits[k] == 1 && k == 0){
-      int macht = pow((24), 2);
-     result = result - (macht * 1);
-     hwlib::cout << "result- " << result << hwlib::endl;
-    }
-    else if (array_bits[k] == 1){
+    //if(array_bits[k] == 1 && k == 0){
+     //int macht = pow(2, 2);
+     //result = result - (macht * 1);
+     //hwlib::cout << "result- " << result << hwlib::endl;
+    //}
+    if (array_bits[k] == 1){
       int macht = pow((k+1), 2);
       result += (macht * 1);
       hwlib::cout << "result+ " << result << hwlib::endl;
