@@ -71,12 +71,12 @@ int hx711::read(){
   int result = 0;
   for(int k=0; k<24; k++){
 
-    if(array_bits[k] == 1 && k < 8){
-      int macht = pow((k+1), 2);
+    if(array_bits[k] == 1 && k == 0){
+      int macht = pow((24), 2);
      result = result - (macht * 1);
      hwlib::cout << "result- " << result << hwlib::endl;
     }
-    if (array_bits[k] == 1){
+    else if (array_bits[k] == 1){
       int macht = pow((k+1), 2);
       result += (macht * 1);
       hwlib::cout << "result+ " << result << hwlib::endl;
