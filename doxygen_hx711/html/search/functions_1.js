@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hx711',['hx711',['../classhx711.html#a72d4c51125485a2dc63493e03834089f',1,'hx711']]]
+  ['get_5fcalibration_5fnumber',['get_calibration_number',['../classhx711.html#a17360863f463f1beb5c05a82368afbf5',1,'hx711']]]
 ];

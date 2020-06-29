@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dt',['DT',['../classhx711.html#a16172244e18e784a85b56372c17ee403',1,'hx711']]]
+  ['calibration_5fnumber',['calibration_number',['../classhx711.html#aa4fcca4a70437670a6e21c9aad38c240',1,'hx711']]]
 ];

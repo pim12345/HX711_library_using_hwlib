@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sck',['SCK',['../classhx711.html#a4c193bacb6ee392981e3fe9b3e8e2264',1,'hx711']]]
+  ['dt',['DT',['../classhx711.html#a16172244e18e784a85b56372c17ee403',1,'hx711']]]
 ];

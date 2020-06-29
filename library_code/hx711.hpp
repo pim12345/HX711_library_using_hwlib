@@ -40,7 +40,12 @@ protected:
   void clock();
 
 
-
+  /// \brief
+  /// calibration number
+  /// \details
+  /// This number is the calibration number.
+  /// If the function: "calibration_set" is runned. the calibration number will bring the scale to the correct zero point.
+  /// The function: "calibration_set" must be runned in the main of the program en there must be no weight on the scale by calibration.
   int calibration_number = 0;
 
 
@@ -68,13 +73,18 @@ public:
     void setup();
 
 
-
+    // \brief
+   /// read weight without calibration function for hx711 class/chip.
+   /// \details
+   /// This function will read the weight of the hx711 chip without calibration.
+   /// The hx711 will recuire the need of load cells.
+   /// In this library the gain will always be 128.
     int read_no_calibration();
 
 
 
     // \brief
-   /// read weight function for hx711 class/chip.
+   /// read weight function for hx711 class/chip (with calibration).
    /// \details
    /// This function will read the weight of the hx711 chip.
    /// The hx711 will recuire the need of load cells.
@@ -104,8 +114,20 @@ public:
     int read_avg_100();
 
 
+
+    // \brief
+   /// Return calibration number used by the read fucntion.
+   /// \details
+   /// Return calibration number used by the read fucntion.
     int get_calibration_number();
 
+
+    // \brief
+   /// Set scale to zero function(calibration).
+   /// \details
+   /// This function will set the correct calibration number.
+   /// So that the read function will give a correct number back by using the calibration number.
+   /// This function will NEED to be runned first to ensure accurate measurements. 
     void calibration_set();
 
 };
