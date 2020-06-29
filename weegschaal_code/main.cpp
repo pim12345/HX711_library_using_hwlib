@@ -22,29 +22,36 @@ int main( void ) {
 
     auto weegschaal = hx711(SCK, DT);
 
-    //auto scl = hwlib::target::pin_oc( hwlib::target::pins::scl );
-    //auto sda = hwlib::target::pin_oc( hwlib::target::pins::sda );
+    auto scl = hwlib::target::pin_oc( hwlib::target::pins::scl );
+    auto sda = hwlib::target::pin_oc( hwlib::target::pins::sda );
 
-    //auto i2c_bus = hwlib::i2c_bus_bit_banged_scl_sda( scl,sda );
+    auto i2c_bus = hwlib::i2c_bus_bit_banged_scl_sda( scl,sda );
 
-    //auto oled = hwlib::glcd_oled( i2c_bus, 0x3c );
-    //oled.clear();
+    auto oled = hwlib::glcd_oled_i2c_128x64_buffered( i2c_bus, 0x3c );
+    oled.clear();
+
 
 
 
     weegschaal.setup();
-    hwlib::cout << "frist read 10:     " << weegschaal.read_avg_10() << hwlib::endl;
+    //hwlib::cout << "frist read 10:     " << weegschaal.read_avg_10() << hwlib::endl;
     weegschaal.calibration_set();
-    hwlib::cout << "cal number: " << weegschaal.get_calibration_number() << hwlib::endl;
-
-    hwlib::cout << "read_10 second na cal number:     " << weegschaal.read_avg_10() << hwlib::endl;
+    //hwlib::cout << "cal number: " << weegschaal.get_calibration_number() << hwlib::endl;
+    //hwlib::cout << "read_10 second na cal number:     ";
+    //hwlib::cout << weegschaal.read_avg_10() << hwlib::endl;
 
     //int weegschaal_resultaat;
     for (;;){
       //weegschaal_resultaat = weegschaal.read();
     //hwlib::cout << weegschaal.read_avg_10() << hwlib::endl;
-
-    hwlib::cout << "read_10:     " << weegschaal.read_avg_10() << hwlib::endl;
+    auto font    = hwlib::font_default_16x16();
+    auto display = hwlib::terminal_from( oled, font );
+    oled.clear();
+    //oled.flush();
+    display << weegschaal.read_avg_10();
+    oled.flush();
+    //hwlib::cout << "read_10:     ";
+    //hwlib::cout << weegschaal.read_avg_10() << hwlib::endl;
 
 
     //oled.clear();
@@ -61,6 +68,8 @@ int main( void ) {
       //  hwlib::cout << weegschaal_resultaat[j];
       //}
       //hwlib::cout << hwlib::endl;
-      //hwlib::wait_ms(200);
+
+
+      hwlib::wait_ms(200);
     }
 }

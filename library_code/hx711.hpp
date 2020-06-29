@@ -44,9 +44,10 @@ protected:
   /// calibration number
   /// \details
   /// This number is the calibration number.
-  /// If the function: "calibration_set" is runned. the calibration number will bring the scale to the correct zero point.
-  /// The function: "calibration_set" must be runned in the main of the program en there must be no weight on the scale by calibration.
-  int calibration_number = 0;
+  /// If the function: calibration_set is runned. the calibration number will bring the scale to the correct zero point.
+  /// The function: calibration_set must be runned in the main of the program en there must be no weight on the scale by calibration.
+  /// will be zero if the function: calibration_set is not runned.
+  float calibration_number = 0;
 
 
 
@@ -61,7 +62,7 @@ public:
   hx711(hwlib::pin_out & SCK, hwlib::pin_in  & DT ):
   SCK( SCK ),
   DT( DT ),
-  calibration_number( 0 )// calibration level will be set to right number after calibration_set is runned.
+  calibration_number( 0 )// calibration level will be set to right number after calibration_set function is runned.
   {}
 
 
@@ -79,7 +80,7 @@ public:
    /// This function will read the weight of the hx711 chip without calibration.
    /// The hx711 will recuire the need of load cells.
    /// In this library the gain will always be 128.
-    int read_no_calibration();
+    float read_no_calibration();
 
 
 
@@ -89,7 +90,7 @@ public:
    /// This function will read the weight of the hx711 chip.
    /// The hx711 will recuire the need of load cells.
    /// In this library the gain will always be 128.
-    int read();
+    float read();
 
 
 
@@ -111,15 +112,15 @@ public:
    /// And will calulate the average of those hunderd reads, and return it.
    /// The hx711 will recuire the need of load cells.
    /// In this library the gain will always be 128.
-    int read_avg_100();
+    float read_avg_100();
 
 
 
     // \brief
    /// Return calibration number used by the read fucntion.
    /// \details
-   /// Return calibration number used by the read fucntion.
-    int get_calibration_number();
+   /// This function will return in integer the number of the calibration. (calibration_number).
+    float get_calibration_number();
 
 
     // \brief
@@ -127,8 +128,29 @@ public:
    /// \details
    /// This function will set the correct calibration number.
    /// So that the read function will give a correct number back by using the calibration number.
-   /// This function will NEED to be runned first to ensure accurate measurements. 
+   /// This function will NEED to be runned first to ensure accurate measurements.
     void calibration_set();
+
+};
+
+
+class hx711_display : public hx711 {
+private:
+  //hx711 scale;
+  hwlib::pin_oc & scl;
+  hwlib::pin_oc & sda;
+
+public:
+  hx711_display(hwlib::pin_out & SCK, hwlib::pin_in & DT, hwlib::pin_oc & scl, hwlib::pin_oc & sda ):
+  hx711( SCK, DT ),
+  scl( scl ),
+  sda( sda )
+  {}
+
+    void setup(){
+
+    }
+
 
 };
 
