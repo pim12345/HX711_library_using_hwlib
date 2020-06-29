@@ -22,17 +22,21 @@ int main( void ) {
 
     auto weegschaal = hx711(SCK, DT);
 
+    auto but_reset = hwlib::target::pin_in( hwlib::target::pins::d3 );
+
+
     auto scl = hwlib::target::pin_oc( hwlib::target::pins::scl );
     auto sda = hwlib::target::pin_oc( hwlib::target::pins::sda );
-
     auto i2c_bus = hwlib::i2c_bus_bit_banged_scl_sda( scl,sda );
-
     auto oled = hwlib::glcd_oled_i2c_128x64_buffered( i2c_bus, 0x3c );
     oled.clear();
 
+    auto font    = hwlib::font_default_16x16();
+    auto display = hwlib::terminal_from( oled, font );
 
-
-
+    display << '\f' << "Starting" << '\n';
+    display << "Please" << '\n' <<  "wait....";
+    oled.flush();
     weegschaal.setup();
     //hwlib::cout << "frist read 10:     " << weegschaal.read_avg_10() << hwlib::endl;
     weegschaal.calibration_set();
@@ -44,12 +48,17 @@ int main( void ) {
     for (;;){
       //weegschaal_resultaat = weegschaal.read();
     //hwlib::cout << weegschaal.read_avg_10() << hwlib::endl;
-    auto font    = hwlib::font_default_16x16();
-    auto display = hwlib::terminal_from( oled, font );
-    oled.clear();
-    //oled.flush();
-    display << weegschaal.read_avg_10();
+    but_reset.refresh();
+    //hwlib::cout << but_reset.read() << hwlib::endl;
+    if (but_reset.read() == 0){ // if button is pressed. The scale wil reset itself. (set weight to zero.).
+      weegschaal.calibration_set();
+    }
+
+    //oled.clear();
+    hwlib::cout << weegschaal.read() << hwlib::endl;
+    display << '\f' << "Gewicht:" << '\n' << weegschaal.read_avg_10() << " g";
     oled.flush();
+
     //hwlib::cout << "read_10:     ";
     //hwlib::cout << weegschaal.read_avg_10() << hwlib::endl;
 
@@ -70,6 +79,6 @@ int main( void ) {
       //hwlib::cout << hwlib::endl;
 
 
-      hwlib::wait_ms(200);
+      //hwlib::wait_ms(200);
     }
 }

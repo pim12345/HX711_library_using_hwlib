@@ -46,10 +46,10 @@ void hx711::setup(){
 
 
 
-float hx711::read_no_calibration(){
+int hx711::read_no_calibration(){
   //uint32_t temp_read = 0;
-  float array_bits [24] = {};
-  float result = 0;
+  int array_bits [24] = {};
+  int result = 0;
 
   DT.refresh();
   while(DT.read() == 1){
@@ -65,8 +65,10 @@ float hx711::read_no_calibration(){
     //temp_read = temp_read << 1;
     //temp_read = temp_read | DT.read();
   }
+  for (int j = 1; j<=gain; j++){
+    clock();
+  }
 
-  clock();
 
   //if(temp_read<0){
   //  return 0;
@@ -97,67 +99,64 @@ float hx711::read_no_calibration(){
 
 }
 
-float hx711::read(){
-  float result = read_no_calibration();
+int hx711::read(){
+  int result = read_no_calibration();
   result += calibration_number;
   //if (result < 0){ // if result is negative. The function will return zero.
   //  return 0;
   //}
-  result = (result / 20642.82166);
+  result = (result / calibration_weight_number); // this number is about 5 kg.
   return result;
 }
 
 
 int hx711::read_avg_10(){
-    float result1 = read();
-    float result2 = read();
-    float result3 = read();
-    float result4 = read();
-    float result5 = read();
-    float result6 = read();
-    float result7 = read();
-    float result8 = read();
-    float result9 = read();
-    float result10 = read();
-    float sum = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10;
+    int result1 = read();
+    int result2 = read();
+    int result3 = read();
+    int result4 = read();
+    int result5 = read();
+    int result6 = read();
+    int result7 = read();
+    int result8 = read();
+    int result9 = read();
+    int result10 = read();
+    int sum = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10;
     return (sum / 10);
 }
 
 
-float hx711::read_avg_100(){
-  float result1 = read_avg_10();
-  float result2 = read_avg_10();
-  float result3 = read_avg_10();
-  float result4 = read_avg_10();
-  float result5 = read_avg_10();
-  float result6 = read_avg_10();
-  float result7 = read_avg_10();
-  float result8 = read_avg_10();
-  float result9 = read_avg_10();
-  float result10 = read_avg_10();
-  float sum = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10;
-  return (sum / 10.0);
+int hx711::read_avg_100(){
+  int result1 = read_avg_10();
+  int result2 = read_avg_10();
+  int result3 = read_avg_10();
+  int result4 = read_avg_10();
+  int result5 = read_avg_10();
+  int result6 = read_avg_10();
+  int result7 = read_avg_10();
+  int result8 = read_avg_10();
+  int result9 = read_avg_10();
+  int result10 = read_avg_10();
+  int sum = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10;
+  return (sum / 10);
 
 }
 
 
-void hx711::calibration_set(){
-  float result1 = read_no_calibration();
-  float result2 = read_no_calibration();
-  float result3 = read_no_calibration();
-  float result4 = read_no_calibration();
-  float result5 = read_no_calibration();
-  float result6 = read_no_calibration();
-  float result7 = read_no_calibration();
-  float result8 = read_no_calibration();
-  float result9 = read_no_calibration();
-  float result10 = read_no_calibration();
-  float sum = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10;
-  float avg_no_calibration = (sum / 10.0);
+void hx711::calibration_set(){ // calculate averge of 100 readings and will make the weight of the scale with no weight on it zero.
+  int sum = 0;
+  for (int i=0; i<=100; i++){
+    sum += read_no_calibration();
+  }
+  int avg_no_calibration = (sum / 100);
   avg_no_calibration *= -1; // will make the number positive.
   calibration_number = avg_no_calibration; // The avarege of hunderd read will with no weight on the scale will set the 0 point of the scale.
 }
 
-float hx711::get_calibration_number(){
+int hx711::get_calibration_number(){
   return calibration_number;
+}
+
+int hx711::get_gain(){
+  return gain;
 }

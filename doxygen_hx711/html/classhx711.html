@@ -73,11 +73,20 @@ $(function() {
  <a href="classhx711.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="hx711_8hpp_source.html">hx711.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for hx711:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classhx711.png" usemap="#hx711_map" alt=""/>
+  <map id="hx711_map" name="hx711_map">
+<area href="classhx711__display.html" alt="hx711_display" shape="rect" coords="0,56,93,80"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a72d4c51125485a2dc63493e03834089f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#a72d4c51125485a2dc63493e03834089f">hx711</a> (hwlib::pin_out &amp;<a class="el" href="classhx711.html#a4c193bacb6ee392981e3fe9b3e8e2264">SCK</a>, hwlib::pin_in &amp;<a class="el" href="classhx711.html#a16172244e18e784a85b56372c17ee403">DT</a>)</td></tr>
-<tr class="separator:a72d4c51125485a2dc63493e03834089f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a8a3b65cee61a78bad644b4c91b8835"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#a1a8a3b65cee61a78bad644b4c91b8835">hx711</a> (hwlib::pin_out &amp;<a class="el" href="classhx711.html#a4c193bacb6ee392981e3fe9b3e8e2264">SCK</a>, hwlib::pin_in &amp;<a class="el" href="classhx711.html#a16172244e18e784a85b56372c17ee403">DT</a>, int <a class="el" href="classhx711.html#a78c82a626bd55b863f85eb0caeb1f96a">gain</a>=1)</td></tr>
+<tr class="separator:a1a8a3b65cee61a78bad644b4c91b8835"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89675899ef2e93af2eddb909db1ccc58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#a89675899ef2e93af2eddb909db1ccc58">setup</a> ()</td></tr>
 <tr class="separator:a89675899ef2e93af2eddb909db1ccc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b98d850095590540c4ccd7017f99e23"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#a1b98d850095590540c4ccd7017f99e23">read_no_calibration</a> ()</td></tr>
@@ -92,6 +101,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a17360863f463f1beb5c05a82368afbf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb2684e26f37db1a4ea13b8091bb95a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#abb2684e26f37db1a4ea13b8091bb95a3">calibration_set</a> ()</td></tr>
 <tr class="separator:abb2684e26f37db1a4ea13b8091bb95a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9926f4b8517de37a68e52a5bcb0e0d70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#a9926f4b8517de37a68e52a5bcb0e0d70">get_gain</a> ()</td></tr>
+<tr class="separator:a9926f4b8517de37a68e52a5bcb0e0d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -107,16 +118,22 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a16172244e18e784a85b56372c17ee403"><td class="memItemLeft" align="right" valign="top">hwlib::pin_in &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#a16172244e18e784a85b56372c17ee403">DT</a></td></tr>
 <tr class="memdesc:a16172244e18e784a85b56372c17ee403"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data pin.  <a href="#a16172244e18e784a85b56372c17ee403">More...</a><br /></td></tr>
 <tr class="separator:a16172244e18e784a85b56372c17ee403"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78c82a626bd55b863f85eb0caeb1f96a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#a78c82a626bd55b863f85eb0caeb1f96a">gain</a></td></tr>
+<tr class="memdesc:a78c82a626bd55b863f85eb0caeb1f96a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The gain of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip.  <a href="#a78c82a626bd55b863f85eb0caeb1f96a">More...</a><br /></td></tr>
+<tr class="separator:a78c82a626bd55b863f85eb0caeb1f96a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4fcca4a70437670a6e21c9aad38c240"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#aa4fcca4a70437670a6e21c9aad38c240">calibration_number</a> = 0</td></tr>
-<tr class="memdesc:aa4fcca4a70437670a6e21c9aad38c240"><td class="mdescLeft">&#160;</td><td class="mdescRight">calibration number  <a href="#aa4fcca4a70437670a6e21c9aad38c240">More...</a><br /></td></tr>
+<tr class="memdesc:aa4fcca4a70437670a6e21c9aad38c240"><td class="mdescLeft">&#160;</td><td class="mdescRight">calibration number(for scale to set to zero)  <a href="#aa4fcca4a70437670a6e21c9aad38c240">More...</a><br /></td></tr>
 <tr class="separator:aa4fcca4a70437670a6e21c9aad38c240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac92a4b0bdb56b27fc499887d853ff353"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#ac92a4b0bdb56b27fc499887d853ff353">calibration_weight_number</a></td></tr>
+<tr class="memdesc:ac92a4b0bdb56b27fc499887d853ff353"><td class="mdescLeft">&#160;</td><td class="mdescRight">weight calibration number  <a href="#ac92a4b0bdb56b27fc499887d853ff353">More...</a><br /></td></tr>
+<tr class="separator:ac92a4b0bdb56b27fc499887d853ff353"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>HX711 CLASS. </p>
 <p>This is a class that implements the reading of a <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. Hx711 datasheet: <a href="https://cdn.sparkfun.com/datasheets/Sensors/ForceFlex/hx711_english.pdf">https://cdn.sparkfun.com/datasheets/Sensors/ForceFlex/hx711_english.pdf</a> The class wil ask for 2 wires in the constructor: The data pin is the DT_pin (hwlib pin_in) And the clock pin SCK (hwlib pin_out). </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a72d4c51125485a2dc63493e03834089f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72d4c51125485a2dc63493e03834089f">&#9670;&nbsp;</a></span>hx711()</h2>
+<a id="a1a8a3b65cee61a78bad644b4c91b8835"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a8a3b65cee61a78bad644b4c91b8835">&#9670;&nbsp;</a></span>hx711()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -134,7 +151,13 @@ Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">hwlib::pin_in &amp;&#160;</td>
-          <td class="paramname"><em>DT</em>&#160;</td>
+          <td class="paramname"><em>DT</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gain</em> = <code>1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -217,6 +240,25 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Return calibration number used by the read fucntion.</p>
 <p>This function will return in integer the number of the calibration. (calibration_number). </p>
+
+</div>
+</div>
+<a id="a9926f4b8517de37a68e52a5bcb0e0d70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9926f4b8517de37a68e52a5bcb0e0d70">&#9670;&nbsp;</a></span>get_gain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hx711::get_gain </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to get the gain of the the class.</p>
+<p>This function will get the gain of the class </p>
 
 </div>
 </div>
@@ -336,8 +378,33 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>calibration number </p>
+<p>calibration number(for scale to set to zero) </p>
 <p>This number is the calibration number. If the function: calibration_set is runned. the calibration number will bring the scale to the correct zero point. The function: calibration_set must be runned in the main of the program en there must be no weight on the scale by calibration. will be zero if the function: calibration_set is not runned. </p>
+
+</div>
+</div>
+<a id="ac92a4b0bdb56b27fc499887d853ff353"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac92a4b0bdb56b27fc499887d853ff353">&#9670;&nbsp;</a></span>calibration_weight_number</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hx711::calibration_weight_number</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>weight calibration number </p>
+<p>This number is used for calibration for accurate weight calculation. To get this number you need to place a object of a known weight on your scale. and read the value of the read. And divide by the known weight of the value and set the calibration_weight_number in de intiizer list </p>
 
 </div>
 </div>
@@ -363,6 +430,31 @@ Protected Attributes</h2></td></tr>
 
 <p>Data pin. </p>
 <p>This is the data pin/wire of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. The pin location is assigned in the main of any program. The data wire will be used by the read 's function's. </p>
+
+</div>
+</div>
+<a id="a78c82a626bd55b863f85eb0caeb1f96a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78c82a626bd55b863f85eb0caeb1f96a">&#9670;&nbsp;</a></span>gain</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hx711::gain</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The gain of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. </p>
+<p>This value will set the gain of the readings of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. The value must be set in the constructer of het <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class. If no value is given in the constructor. the value will be 1(gain of 128). 3 options will be given. option 1: gain = 1. The gain is 128. option 2: gain = 2. The gain is 32. option 3: gain = 3. The gain is 64. </p>
 
 </div>
 </div>
@@ -397,7 +489,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 29 2020 13:14:25 for &lt;hx711 library&gt; by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 29 2020 22:15:59 for &lt;hx711 library&gt; by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

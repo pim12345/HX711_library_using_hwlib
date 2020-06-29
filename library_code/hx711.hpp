@@ -39,17 +39,36 @@ protected:
   /// The clock low times wille around 9 microsecond. (tested on arduino DUE).
   void clock();
 
+  /// \brief
+  /// The gain of the hx711 chip
+  /// \details
+  /// This value will set the gain of the readings of the hx711 chip.
+  /// The value must be set in the constructer of het hx711 class.
+  /// If no value is given in the constructor. the value will be 1(gain of 128).
+  /// 3 options will be given.
+  /// option 1: gain = 1. The gain is 128.
+  /// option 2: gain = 2. The gain is 32.
+  /// option 3: gain = 3. The gain is 64.
+  int gain;
+
 
   /// \brief
-  /// calibration number
+  /// calibration number(for scale to set to zero)
   /// \details
   /// This number is the calibration number.
   /// If the function: calibration_set is runned. the calibration number will bring the scale to the correct zero point.
   /// The function: calibration_set must be runned in the main of the program en there must be no weight on the scale by calibration.
   /// will be zero if the function: calibration_set is not runned.
-  float calibration_number = 0;
+  int calibration_number = 0;
 
 
+  /// \brief
+  /// weight calibration number
+  /// \details
+  /// This number is used for calibration for accurate weight calculation.
+  /// To get this number you need to place a object of a known weight on your scale.
+  /// and read the value of the read. And divide by the known weight of the value and set the calibration_weight_number in de intiizer list
+  int calibration_weight_number;
 
 public:
 
@@ -59,11 +78,19 @@ public:
    /// This constructor initializes two data pins. The clock pin(SCK: HWlib pin_out) and the data pin(DT: HWlib pin_in).
    /// this wil be used as reference because otherwise it will not be affected the real world.
    /// with just a whole value.
-  hx711(hwlib::pin_out & SCK, hwlib::pin_in  & DT ):
+  hx711(hwlib::pin_out & SCK, hwlib::pin_in & DT, int gain = 1 ):
   SCK( SCK ),
   DT( DT ),
-  calibration_number( 0 )// calibration level will be set to right number after calibration_set function is runned.
-  {}
+  gain( gain ),
+  calibration_number( 0 ),// calibration level will be set to right number after calibration_set function is runned.
+  calibration_weight_number( 20.64282166 )
+  {if(gain > 3){
+    gain = 3;
+  }
+  if (gain < 1){
+    gain = 1;
+  }
+  }
 
 
     // \brief
@@ -80,7 +107,7 @@ public:
    /// This function will read the weight of the hx711 chip without calibration.
    /// The hx711 will recuire the need of load cells.
    /// In this library the gain will always be 128.
-    float read_no_calibration();
+    int read_no_calibration();
 
 
 
@@ -90,7 +117,7 @@ public:
    /// This function will read the weight of the hx711 chip.
    /// The hx711 will recuire the need of load cells.
    /// In this library the gain will always be 128.
-    float read();
+    int read();
 
 
 
@@ -112,7 +139,7 @@ public:
    /// And will calulate the average of those hunderd reads, and return it.
    /// The hx711 will recuire the need of load cells.
    /// In this library the gain will always be 128.
-    float read_avg_100();
+    int read_avg_100();
 
 
 
@@ -120,7 +147,7 @@ public:
    /// Return calibration number used by the read fucntion.
    /// \details
    /// This function will return in integer the number of the calibration. (calibration_number).
-    float get_calibration_number();
+    int get_calibration_number();
 
 
     // \brief
@@ -130,6 +157,12 @@ public:
    /// So that the read function will give a correct number back by using the calibration number.
    /// This function will NEED to be runned first to ensure accurate measurements.
     void calibration_set();
+
+    // \brief
+   /// Function to get the gain of the the class.
+   /// \details
+   /// This function will get the gain of the class
+    int get_gain();
 
 };
 
