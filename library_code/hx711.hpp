@@ -1,8 +1,8 @@
 #ifndef HX711_HPP
 #define HX711_HPP
 
-#include "hwlib.hpp"
-#include <array>
+#include "hwlib.hpp"// is used for pin manimpulations.
+#include <array> // is used for saving bits from the hx711 chip.
 #include <cmath> //is used for squared calulations
 /// @file
 
@@ -14,6 +14,7 @@
 /// The class wil ask for 2 wires in the constructor:
 /// The data pin is the DT_pin (hwlib pin_in)
 /// And the clock pin SCK (hwlib pin_out).
+/// To get the accurate reading it is important to run the setup function first
 class hx711 {
 protected:
 
@@ -49,6 +50,7 @@ protected:
   /// option 1: gain = 1. The gain is 128.
   /// option 2: gain = 2. The gain is 32.
   /// option 3: gain = 3. The gain is 64.
+  /// if an other value will be given it will be corrected in the setup function.
   int gain;
 
 
@@ -95,6 +97,7 @@ public:
     void setup();
 
 
+
     // \brief
    /// Read weight without calibration function for hx711 class/chip.
    /// \details
@@ -110,7 +113,8 @@ public:
    /// \details
    /// This function will read the weight of the hx711 chip in grams.
    /// The hx711 will recuire the need of load cells.
-   /// In this library the gain will always be 128.
+   /// The gain wil be set in the constructer.
+   /// this function uses the calibration given in the constructor.
     int read();
 
 
@@ -132,7 +136,7 @@ public:
    /// This function will read ten times the weight of the hx711 chip.
    /// And will calulate the average of those ten reads, and return it.
    /// The hx711 will recuire the need of load cells.
-   /// In this library the gain will always be 128.
+   /// The gain wil be set in the constructer.
     int read_avg_10();
 
 
@@ -143,7 +147,7 @@ public:
    /// This function will read hunderd times the weight of the hx711 chip.
    /// And will calulate the average of those hunderd reads, and return it.
    /// The hx711 will recuire the need of load cells.
-   /// In this library the gain will always be 128.
+   /// The gain wil be set in the constructer.
     int read_avg_100();
 
 

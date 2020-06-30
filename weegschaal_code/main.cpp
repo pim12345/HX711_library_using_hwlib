@@ -38,7 +38,7 @@ int main( void ) {
     oled.flush();
 
     weegschaal.setup();
-    weegschaal.calibration_set();
+    weegschaal.calibration_set(); //set the scale to correct zero point
     for (;;){
 
     but_reset.refresh(); //refresh if button is pressed. If this function is not runned. The function will get the bufferd value of the button.
