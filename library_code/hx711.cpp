@@ -13,6 +13,12 @@ void hx711::clock(){
 
 
 void hx711::setup(){
+  if(gain > 3){
+    gain = 3;
+  }
+  if (gain < 1){
+    gain = 1;
+  }
   int array_bits [25];
   DT.refresh();
   while(DT.read() == 1){
@@ -39,15 +45,11 @@ void hx711::setup(){
 
   }
   clock();
-  //for (int j=0; j<=24; j++){
-  //  hwlib::cout << array_bits[j] << hwlib::endl;
-  //}
 }
 
 
 
 int hx711::read_no_calibration(){
-  //uint32_t temp_read = 0;
   int array_bits [24] = {};
   int result = 0;
 
@@ -56,29 +58,17 @@ int hx711::read_no_calibration(){
     DT.refresh();
   }
 
-
   for (int i=0; i<24; i++){
     clock();
     DT.refresh();
     array_bits[i] = DT.read();
-
-    //temp_read = temp_read << 1;
-    //temp_read = temp_read | DT.read();
   }
+
   for (int j = 1; j<=gain; j++){
     clock();
   }
 
-
-  //if(temp_read<0){
-  //  return 0;
-  //}
-  //if (temp_read > 0xFFFFFF){
-  //  return 0xFFFFFF;
-  //}
-
   //for converting binary to decimal number is used this tutorial for idea for code: https://nl.wikihow.com/Van-een-binair-getal-een-decimaal-getal-maken.
-
   for(int k=24; k>=0; k--){
 
     if(array_bits[k] == 1 && k == 0){ // 24th bit is 1 the read is negative. I used this site for inspiration: https://www.youtube.com/watch?v=ykkFk-2y6SE .
@@ -99,6 +89,8 @@ int hx711::read_no_calibration(){
 
 }
 
+
+
 int hx711::read(){
   int result = read_no_calibration();
   result += calibration_number;
@@ -109,13 +101,16 @@ int hx711::read(){
   return result;
 }
 
-int hx711::read_ponds(){
+
+
+int hx711::read_pounds(){
   int result = read_no_calibration();
   result += calibration_number;
   result = (result / calibration_weight_number);
   result *= 0.0022046; // 1 gram is 0.0022046 pounds.
   return result;
 }
+
 
 
 int hx711::read_avg_10(){
@@ -127,6 +122,7 @@ int hx711::read_avg_10(){
 }
 
 
+
 int hx711::read_avg_100(){
   int sum = 0;
   for (int i=1; i<=100; i++){
@@ -134,6 +130,8 @@ int hx711::read_avg_100(){
   }
   return (sum / 100);
 }
+
+
 
 int hx711::read_avg_variable(int amount){ // This function will calulate a averagere of given of read commando
   int sum = 0;
@@ -146,6 +144,8 @@ int hx711::read_avg_variable(int amount){ // This function will calulate a avera
   return (sum / amount);
 }
 
+
+
 void hx711::calibration_set(){ // calculate averge of 100 readings and will make the weight of the scale with no weight on it zero.
   int sum = 0;
   for (int i=0; i<=100; i++){
@@ -156,9 +156,13 @@ void hx711::calibration_set(){ // calculate averge of 100 readings and will make
   calibration_number = avg_no_calibration; // The avarege of hunderd read will with no weight on the scale will set the 0 point of the scale.
 }
 
+
+
 int hx711::get_calibration_number(){
   return calibration_number;
 }
+
+
 
 int hx711::get_gain(){
   return gain;

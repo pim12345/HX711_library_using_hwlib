@@ -1,6 +1,5 @@
 #include "hwlib.hpp"
 #include "../library_code/hx711.hpp"
-//#include <array>
 
 //void display(auto oled, int result){
 //  oled.clear();
@@ -13,16 +12,17 @@
 //}
 
 int main( void ) {
-    hwlib::wait_ms(4000);
+    hwlib::wait_ms(2000);//wait for the console to get a connection from the arduino
     hwlib::cout << "begin" << '\n';
 
     auto SCK = hwlib::target::pin_out( hwlib::target::pins::d10 );
     auto DT = hwlib::target::pin_in( hwlib::target::pins::d6 );
 
-    auto weegschaal = hx711(SCK, DT);
+    auto weegschaal = hx711(SCK, DT, 1, 20.64282166);
 
     auto but_reset = hwlib::target::pin_in( hwlib::target::pins::d3 );
-
+    auto but_switch_to_pounds = hwlib::target::pin_in( hwlib::target::pins::d4 );
+    bool show_pounds = false; //change this to true if by start if the scale must show pounds instead of grams.
 
     auto scl = hwlib::target::pin_oc( hwlib::target::pins::scl );
     auto sda = hwlib::target::pin_oc( hwlib::target::pins::sda );
@@ -36,48 +36,41 @@ int main( void ) {
     display << '\f' << "Starting" << '\n';
     display << "Please" << '\n' <<  "Wait....";
     oled.flush();
-    weegschaal.setup();
-    //hwlib::cout << "frist read 10:     " << weegschaal.read_avg_10() << hwlib::endl;
-    weegschaal.calibration_set();
-    //hwlib::cout << "cal number: " << weegschaal.get_calibration_number() << hwlib::endl;
-    //hwlib::cout << "read_10 second na cal number:     ";
-    //hwlib::cout << weegschaal.read_avg_10() << hwlib::endl;
 
-    //int weegschaal_resultaat;
+    weegschaal.setup();
+    weegschaal.calibration_set();
     for (;;){
-      //weegschaal_resultaat = weegschaal.read();
-    //hwlib::cout << weegschaal.read_avg_10() << hwlib::endl;
-    but_reset.refresh();
-    //hwlib::cout << but_reset.read() << hwlib::endl;
+
+    but_reset.refresh(); //refresh if button is pressed. If this function is not runned. The function will get the bufferd value of the button.
+    //hwlib::cout << "button:  " << but_reset.read() << hwlib::endl;
     if (but_reset.read() == 0){ // if button is pressed. The scale wil reset itself. (set weight to zero.).
-      weegschaal.calibration_set();
+      display << '\f' << "Calibrating" << '\n' << "Please " << '\n' << "Wait...";
+      oled.flush();
+      weegschaal.calibration_set(); // reset current weight on scale to zero point.
     }
 
-    //oled.clear();
-    hwlib::cout << weegschaal.read() << hwlib::endl;
-    display << '\f' << "Gewicht:" << '\n' << weegschaal.read_avg_10() << " g";
-    oled.flush();
 
-    //hwlib::cout << "read_10:     ";
-    //hwlib::cout << weegschaal.read_avg_10() << hwlib::endl;
+    //hwlib::cout << "pounds: "<< weegschaal.read_pounds() << hwlib::endl;
+    but_switch_to_pounds.refresh();
+    if (but_switch_to_pounds.read() == 0){
+      if(show_pounds == false){
+        show_pounds = true;
+      }
+      else if (show_pounds == true){
+        show_pounds = false;
+      }
+    hwlib::wait_ms(50);
+    }
+    if (show_pounds == false){
+      hwlib::cout << weegschaal.read() << hwlib::endl;
+      display << '\f' << "Gewicht:" << '\n' << weegschaal.read_avg_10() << " g";
+      oled.flush();
+    }
+    else if(show_pounds == true){
+      display << '\f' << "Gewicht:" << '\n' << weegschaal.read_pounds() << " lb";
+      oled.flush();
+    }
+    hwlib::wait_ms(20);
 
-
-    //oled.clear();
-      //auto font    = hwlib::font_default_8x8();
-      //auto display = hwlib::terminal_from( oled, font );
-
-     //display << result << '\n';
-
-    //display(oled, result);
-
-
-
-        //for (int j=0; j<=24; j++){
-      //  hwlib::cout << weegschaal_resultaat[j];
-      //}
-      //hwlib::cout << hwlib::endl;
-
-
-      //hwlib::wait_ms(200);
     }
 }

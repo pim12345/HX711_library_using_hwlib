@@ -78,19 +78,13 @@ public:
    /// This constructor initializes two data pins. The clock pin(SCK: HWlib pin_out) and the data pin(DT: HWlib pin_in).
    /// this wil be used as reference because otherwise it will not be affected the real world.
    /// with just a whole value.
-  hx711(hwlib::pin_out & SCK, hwlib::pin_in & DT, int gain = 1 ):
+  hx711(hwlib::pin_out & SCK, hwlib::pin_in & DT, int gain = 1, int calibration_weight_number = 0 ):
   SCK( SCK ),
   DT( DT ),
   gain( gain ),
   calibration_number( 0 ),// calibration level will be set to right number after calibration_set function is runned.
-  calibration_weight_number( 20.64282166 )
-  {if(gain > 3){
-    gain = 3;
-  }
-  if (gain < 1){
-    gain = 1;
-  }
-  }
+  calibration_weight_number( calibration_weight_number )
+  {}
 
 
     // \brief
@@ -126,7 +120,11 @@ public:
     /// This function will read the weight of the hx711 chip in ponds.
     /// The hx711 will recuire the need of load cells.
     /// In this library the gain will always be 128.
-    int read_ponds();
+    /// Please note that a lot of emmbedded systems can't handle float conversions well,
+    /// PLease note that the weight given is a integer. So it will be no decimal numbers.
+    int read_pounds();
+
+
 
     // \brief
    /// 10 average read weight function for hx711 class/chip.
