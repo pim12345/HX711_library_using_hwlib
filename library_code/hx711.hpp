@@ -24,12 +24,16 @@ protected:
   /// This is the clock pin/wire of the hx711 chip. The pin location is assigned in the main of any program.
   /// The clock will be created in the private functon: clock().
   hwlib::pin_out & SCK;
+
+
+
   /// \brief
   /// Data pin.
   /// \details
   /// This is the data pin/wire of the hx711 chip. The pin location is assigned in the main of any program.
   /// The data wire will be used by the read 's function's.
   hwlib::pin_in  & DT;
+
 
 
   /// \brief
@@ -39,6 +43,8 @@ protected:
   /// The clock high times will be around 11.5 microsecond. (tested on arduino DUE).
   /// The clock low times wille around 9 microsecond. (tested on arduino DUE).
   void clock();
+
+
 
   /// \brief
   /// The gain of the hx711 chip
@@ -54,6 +60,7 @@ protected:
   int gain;
 
 
+
   /// \brief
   /// calibration number(for scale to set to zero)
   /// \details
@@ -64,6 +71,7 @@ protected:
   int calibration_number = 0;
 
 
+
   /// \brief
   /// weight calibration number
   /// \details
@@ -72,9 +80,11 @@ protected:
   /// and read the value of the read. And divide by the known weight of the value and set the calibration_weight_number in de intiizer list
   int calibration_weight_number;
 
+
+
 public:
 
-   // \brief
+   /// \brief
    /// constructor of the hx711 chip
    /// \details
    /// This constructor initializes two data pins. The clock pin(SCK: HWlib pin_out) and the data pin(DT: HWlib pin_in).
@@ -89,7 +99,8 @@ public:
   {}
 
 
-    // \brief
+
+   /// \brief
    /// setup for hx711 chip.
    /// \details
    /// This function will communicate with te chip the first time. Because the chip expect to set a gain,
@@ -98,7 +109,7 @@ public:
 
 
 
-    // \brief
+   /// \brief
    /// Read weight without calibration function for hx711 class/chip.
    /// \details
    /// This function will read the weight of the hx711 chip without calibration.
@@ -108,7 +119,7 @@ public:
 
 
 
-    // \brief
+   /// \brief
    /// Read weight function for hx711 class/chip (with calibration).
    /// \details
    /// This function will read the weight of the hx711 chip in grams.
@@ -118,7 +129,8 @@ public:
     int read();
 
 
-    // \brief
+
+    /// \brief
     /// Read weight in pounds function for hx711 class/chip (with calibration).
     /// \details
     /// This function will read the weight of the hx711 chip in ponds.
@@ -130,7 +142,7 @@ public:
 
 
 
-    // \brief
+   /// \brief
    /// 10 average read weight function for hx711 class/chip.
    /// \details
    /// This function will read ten times the weight of the hx711 chip.
@@ -141,7 +153,7 @@ public:
 
 
 
-    // \brief
+   /// \brief
    /// 100 average read weight function for hx711 class/chip.
    /// \details
    /// This function will read hunderd times the weight of the hx711 chip.
@@ -151,21 +163,25 @@ public:
     int read_avg_100();
 
 
-    // \brief
+
+    /// \brief
     /// Calulate the avagere of given amount of reads
     /// \details
     /// This function will calulate a average of a given amount of reads given by as a argument.
     /// Please note: the time that the function will take will increase with more and more reads.
     int read_avg_variable(int amount);
 
-    // \brief
+
+
+   /// \brief
    /// Return calibration number used by the read fucntion.
    /// \details
    /// This function will return in integer the number of the calibration. (calibration_number).
     int get_calibration_number();
 
 
-    // \brief
+
+   /// \brief
    /// Set scale to zero function(calibration).
    /// \details
    /// This function will set the correct calibration number.
@@ -173,7 +189,9 @@ public:
    /// This function will NEED to be runned first to ensure accurate measurements.
     void calibration_set();
 
-    // \brief
+
+
+   /// \brief
    /// Function to get the gain of the the class.
    /// \details
    /// This function will get the gain of the class

@@ -1,5 +1,5 @@
 #include "hx711.hpp"
-
+/// @file
 
 void hx711::clock(){
   SCK.write(1);
@@ -44,10 +44,12 @@ int hx711::read_no_calibration(){
     }
   }
 
-  return result;
-}
+  return result;}
 
-void hx711::calibration_set(){ // calculate averge of 100 readings and will make the weight of the scale with no weight on it zero.
+
+
+void hx711::calibration_set(){
+  // calculate averge of 100 readings and will make the weight of the scale with no weight on it zero.
   int sum = 0;
   for (int i=0; i<=100; i++){
     sum += read_no_calibration();
@@ -56,6 +58,8 @@ void hx711::calibration_set(){ // calculate averge of 100 readings and will make
   avg_no_calibration *= -1; // will make the number positive.
   calibration_number = avg_no_calibration; // The avarege of hunderd read will with no weight on the scale will set the 0 point of the scale.
 }
+
+
 
 void hx711::setup(){
   if(gain > 3){
@@ -98,9 +102,6 @@ void hx711::setup(){
 int hx711::read(){
   int result = read_no_calibration();
   result += calibration_number;
-  //if (result < 0){ // if result is negative. The function will return zero.
-  //  return 0;
-  //}
   result = (result / calibration_weight_number);
   return result;
 }
@@ -137,7 +138,8 @@ int hx711::read_avg_100(){
 
 
 
-int hx711::read_avg_variable(int amount){ // This function will calulate a averagere of given of read commando
+int hx711::read_avg_variable(int amount){
+  // This function will calulate a averagere of given of read commando
   int sum = 0;
   if (amount < 0){
     amount = 0;
@@ -147,10 +149,6 @@ int hx711::read_avg_variable(int amount){ // This function will calulate a avera
   }
   return (sum / amount);
 }
-
-
-
-
 
 
 
