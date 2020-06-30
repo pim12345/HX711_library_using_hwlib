@@ -1,7 +1,6 @@
 #include "hwlib.hpp"
 #include "../library_code/hx711.hpp"
-#include <vector>
-#include <array>
+//#include <array>
 
 //void display(auto oled, int result){
 //  oled.clear();
@@ -35,7 +34,7 @@ int main( void ) {
     auto display = hwlib::terminal_from( oled, font );
 
     display << '\f' << "Starting" << '\n';
-    display << "Please" << '\n' <<  "wait....";
+    display << "Please" << '\n' <<  "Wait....";
     oled.flush();
     weegschaal.setup();
     //hwlib::cout << "frist read 10:     " << weegschaal.read_avg_10() << hwlib::endl;

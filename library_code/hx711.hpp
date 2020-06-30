@@ -102,7 +102,7 @@ public:
 
 
     // \brief
-   /// read weight without calibration function for hx711 class/chip.
+   /// Read weight without calibration function for hx711 class/chip.
    /// \details
    /// This function will read the weight of the hx711 chip without calibration.
    /// The hx711 will recuire the need of load cells.
@@ -112,14 +112,21 @@ public:
 
 
     // \brief
-   /// read weight function for hx711 class/chip (with calibration).
+   /// Read weight function for hx711 class/chip (with calibration).
    /// \details
-   /// This function will read the weight of the hx711 chip.
+   /// This function will read the weight of the hx711 chip in grams.
    /// The hx711 will recuire the need of load cells.
    /// In this library the gain will always be 128.
     int read();
 
 
+    // \brief
+    /// Read weight in pounds function for hx711 class/chip (with calibration).
+    /// \details
+    /// This function will read the weight of the hx711 chip in ponds.
+    /// The hx711 will recuire the need of load cells.
+    /// In this library the gain will always be 128.
+    int read_ponds();
 
     // \brief
    /// 10 average read weight function for hx711 class/chip.
@@ -142,6 +149,12 @@ public:
     int read_avg_100();
 
 
+    // \brief
+    /// Calulate the avagere of given amount of reads
+    /// \details
+    /// This function will calulate a average of a given amount of reads given by as a argument.
+    /// Please note: the time that the function will take will increase with more and more reads.
+    int read_avg_variable(int amount);
 
     // \brief
    /// Return calibration number used by the read fucntion.

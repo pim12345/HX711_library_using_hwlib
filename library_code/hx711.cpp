@@ -105,43 +105,46 @@ int hx711::read(){
   //if (result < 0){ // if result is negative. The function will return zero.
   //  return 0;
   //}
-  result = (result / calibration_weight_number); // this number is about 5 kg.
+  result = (result / calibration_weight_number);
+  return result;
+}
+
+int hx711::read_ponds(){
+  int result = read_no_calibration();
+  result += calibration_number;
+  result = (result / calibration_weight_number);
+  result *= 0.0022046; // 1 gram is 0.0022046 pounds.
   return result;
 }
 
 
 int hx711::read_avg_10(){
-    int result1 = read();
-    int result2 = read();
-    int result3 = read();
-    int result4 = read();
-    int result5 = read();
-    int result6 = read();
-    int result7 = read();
-    int result8 = read();
-    int result9 = read();
-    int result10 = read();
-    int sum = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10;
+  int sum = 0;
+  for (int i=1; i<=10; i++){
+    sum+=read();
+  }
     return (sum / 10);
 }
 
 
 int hx711::read_avg_100(){
-  int result1 = read_avg_10();
-  int result2 = read_avg_10();
-  int result3 = read_avg_10();
-  int result4 = read_avg_10();
-  int result5 = read_avg_10();
-  int result6 = read_avg_10();
-  int result7 = read_avg_10();
-  int result8 = read_avg_10();
-  int result9 = read_avg_10();
-  int result10 = read_avg_10();
-  int sum = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10;
-  return (sum / 10);
-
+  int sum = 0;
+  for (int i=1; i<=100; i++){
+    sum+=read();
+  }
+  return (sum / 100);
 }
 
+int hx711::read_avg_variable(int amount){ // This function will calulate a averagere of given of read commando
+  int sum = 0;
+  if (amount < 0){
+    amount = 0;
+  }
+  for (int i=1; i<=amount; i++){
+    sum+=read();
+  }
+  return (sum / amount);
+}
 
 void hx711::calibration_set(){ // calculate averge of 100 readings and will make the weight of the scale with no weight on it zero.
   int sum = 0;
