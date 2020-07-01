@@ -49,7 +49,7 @@ int main( void ) {
       else if (power == true){
         power = false;
       }
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(50); // wait time because it otherwise if the button is presses it will switch 2 times.
     }
     if (power == true){
       weegschaal.power_up();
@@ -63,7 +63,7 @@ int main( void ) {
       oled.flush();
       weegschaal.power_down();
     }
-    hwlib::wait_ms(20);
+    hwlib::wait_ms(20); // wait time because it otherwise if the button is presses it will switch 2 times.
 
     }
 }

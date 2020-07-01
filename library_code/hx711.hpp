@@ -228,7 +228,11 @@ public:
    /// \brief
    /// Function to get the gain of the the class.
    /// \details
-   /// This function will get the gain of the class
+   /// This function will get the gain of the class.
+   /// the gain is has 3 options.
+   /// option 1: gain = 1. The gain is 128.
+   /// option 2: gain = 2. The gain is 32.
+   /// option 3: gain = 3. The gain is 64.
     int get_gain();
 
 };
