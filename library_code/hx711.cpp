@@ -71,7 +71,6 @@ void hx711::calibration_set(){
   read_no_calibration(); // first value is wird so this is othwise the calibartion is off.
   for (int i=1; i<=100; i++){
     sum += read_no_calibration();
-    hwlib::cout << sum << hwlib::endl;
   }
   int avg_no_calibration = (sum / 100);
   avg_no_calibration *= -1; // will make the number positive.
