@@ -1,6 +1,22 @@
 #include "hx711.hpp"
 /// @file
 
+
+
+void hx711::power_down(){
+  SCK.write(1);
+  SCK.flush();
+}
+
+
+
+void hx711::power_up(){
+  SCK.write(0);
+  SCK.flush();
+}
+
+
+
 void hx711::clock(){
   SCK.write(1);
   SCK.flush();
@@ -68,7 +84,6 @@ void hx711::setup(){
   if (gain < 1){
     gain = 1;
   }
-  int array_bits [25];
   DT.refresh();
   while(DT.read() == 1){
     DT.refresh();
@@ -76,11 +91,12 @@ void hx711::setup(){
 
   for (int i=0; i<=24; i++){
     clock();
-    DT.refresh();
-    array_bits[i] = DT.read();
+    //DT.refresh();
 
   }
-  clock();
+  for (int j = 1; j<=gain; j++){
+    clock();
+  }
 
   DT.refresh();
   while(DT.read() == 1){
@@ -89,12 +105,11 @@ void hx711::setup(){
 
   for (int i=0; i<=24; i++){
     clock();
-    DT.refresh();
-    array_bits[i] = DT.read();
-
   }
-  clock();
-  //calibration_set()
+
+  for (int j = 1; j<=gain; j++){
+    clock();
+  }
 }
 
 

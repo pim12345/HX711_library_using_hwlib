@@ -88,6 +88,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acd6661a3de8ad54eb31c999c9f198ecf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#acd6661a3de8ad54eb31c999c9f198ecf">hx711</a> (hwlib::pin_out &amp;<a class="el" href="classhx711.html#a4c193bacb6ee392981e3fe9b3e8e2264">SCK</a>, hwlib::pin_in &amp;<a class="el" href="classhx711.html#a16172244e18e784a85b56372c17ee403">DT</a>, int <a class="el" href="classhx711.html#a78c82a626bd55b863f85eb0caeb1f96a">gain</a>=1, int <a class="el" href="classhx711.html#ac92a4b0bdb56b27fc499887d853ff353">calibration_weight_number</a>=0)</td></tr>
 <tr class="memdesc:acd6661a3de8ad54eb31c999c9f198ecf"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip  <a href="#acd6661a3de8ad54eb31c999c9f198ecf">More...</a><br /></td></tr>
 <tr class="separator:acd6661a3de8ad54eb31c999c9f198ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9fc4bf25830da60972cda5432339b4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#ae9fc4bf25830da60972cda5432339b4a">power_down</a> ()</td></tr>
+<tr class="memdesc:ae9fc4bf25830da60972cda5432339b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power down command for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip.  <a href="#ae9fc4bf25830da60972cda5432339b4a">More...</a><br /></td></tr>
+<tr class="separator:ae9fc4bf25830da60972cda5432339b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae560f894156fe75e27ee66772e2af188"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#ae560f894156fe75e27ee66772e2af188">power_up</a> ()</td></tr>
+<tr class="memdesc:ae560f894156fe75e27ee66772e2af188"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power up command for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip.  <a href="#ae560f894156fe75e27ee66772e2af188">More...</a><br /></td></tr>
+<tr class="separator:ae560f894156fe75e27ee66772e2af188"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89675899ef2e93af2eddb909db1ccc58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#a89675899ef2e93af2eddb909db1ccc58">setup</a> ()</td></tr>
 <tr class="memdesc:a89675899ef2e93af2eddb909db1ccc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">setup for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip.  <a href="#a89675899ef2e93af2eddb909db1ccc58">More...</a><br /></td></tr>
 <tr class="separator:a89675899ef2e93af2eddb909db1ccc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -221,7 +227,7 @@ Protected Attributes</h2></td></tr>
 <p>Set scale to zero function(calibration). </p>
 <p>This function will set the correct calibration number. So that the read function will give a correct number back by using the calibration number. This function will NEED to be runned first to ensure accurate measurements. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00051">51</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00067">67</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -251,7 +257,7 @@ Protected Attributes</h2></td></tr>
 <p>clock function </p>
 <p>This function will create a clock that will be used to communicate with te <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. The clock high times will be around 11.5 microsecond. (tested on arduino DUE). The clock low times wille around 9 microsecond. (tested on arduino DUE). </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00004">4</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00020">20</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -273,7 +279,7 @@ Protected Attributes</h2></td></tr>
 <p>Return calibration number used by the read fucntion. </p>
 <p>This function will return in integer the number of the calibration. (calibration_number). </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00155">155</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00173">173</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -295,7 +301,51 @@ Protected Attributes</h2></td></tr>
 <p>Function to get the gain of the the class. </p>
 <p>This function will get the gain of the class </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00161">161</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00179">179</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae9fc4bf25830da60972cda5432339b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9fc4bf25830da60972cda5432339b4a">&#9670;&nbsp;</a></span>power_down()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hx711::power_down </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Power down command for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. </p>
+<p>Power down command for the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. This is used if the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip is not used to save energy. This will pull the clock pin high and after 60 microseconds the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> will power power_down Until the clock pin will pulled low.(function power_up). Please note: after a power down command, and it is given a power up command. The <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip is reset and the gain is 128. </p>
+
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00006">6</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae560f894156fe75e27ee66772e2af188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae560f894156fe75e27ee66772e2af188">&#9670;&nbsp;</a></span>power_up()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hx711::power_up </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Power up command for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. </p>
+<p>Power down command for the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. This is used if the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip if the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> is power_down and the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> must be used again. This will pull the clock pin low. And the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> will power up. This command must only be given after a power_down command. Please note: after a power down command, and it is given a power up command. The <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip is reset and the gain is 128. </p>
+
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00013">13</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -317,7 +367,7 @@ Protected Attributes</h2></td></tr>
 <p>Read weight function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip (with calibration). </p>
 <p>This function will read the weight of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip in grams. The <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> will recuire the need of load cells. The gain wil be set in the constructer. this function uses the calibration given in the constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00102">102</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00117">117</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -339,7 +389,7 @@ Protected Attributes</h2></td></tr>
 <p>10 average read weight function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip. </p>
 <p>This function will read ten times the weight of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. And will calulate the average of those ten reads, and return it. The <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> will recuire the need of load cells. The gain wil be set in the constructer. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00121">121</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00139">139</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -361,7 +411,7 @@ Protected Attributes</h2></td></tr>
 <p>100 average read weight function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip. </p>
 <p>This function will read hunderd times the weight of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. And will calulate the average of those hunderd reads, and return it. The <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> will recuire the need of load cells. The gain wil be set in the constructer. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00131">131</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00149">149</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -384,7 +434,7 @@ Protected Attributes</h2></td></tr>
 <p>Calulate the avagere of given amount of reads. </p>
 <p>This function will calulate a average of a given amount of reads given by as a argument. Please note: the time that the function will take will increase with more and more reads. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00141">141</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00159">159</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -406,7 +456,7 @@ Protected Attributes</h2></td></tr>
 <p>Read weight without calibration function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip. </p>
 <p>This function will read the weight of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip without calibration. The <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> will recuire the need of load cells. In this library the gain will always be 128. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00015">15</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00031">31</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -428,7 +478,7 @@ Protected Attributes</h2></td></tr>
 <p>Read weight in pounds function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip (with calibration). </p>
 <p>This function will read the weight of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip in ponds. The <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> will recuire the need of load cells. In this library the gain will always be 128. Please note that a lot of emmbedded systems can't handle float conversions well, PLease note that the weight given is a integer. So it will be no decimal numbers. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00111">111</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00129">129</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -450,7 +500,7 @@ Protected Attributes</h2></td></tr>
 <p>setup for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. </p>
 <p>This function will communicate with te chip the first time. Because the chip expect to set a gain, (25 clock). the first time values will not be used. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00064">64</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00080">80</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -597,7 +647,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 30 2020 21:29:37 for &lt;hx711 library&gt; by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 1 2020 13:11:53 for &lt;hx711 library&gt; by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

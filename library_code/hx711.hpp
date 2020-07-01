@@ -99,6 +99,29 @@ public:
   {}
 
 
+   /// \brief
+   /// Power down command for hx711 chip
+   /// \details
+   /// Power down command for the hx711 chip.
+   /// This is used if the hx711 chip is not used to save energy.
+   /// This will pull the clock pin high and after 60 microseconds the hx711 will power power_down
+   /// Until the clock pin will pulled low.(function power_up).
+   /// Please note: after a power down command, and it is given a power up command. The hx711 chip is reset and the gain is 128.
+   void power_down();
+
+
+
+   /// \brief
+   /// Power up command for hx711 chip
+   /// \details
+   /// Power down command for the hx711 chip.
+   /// This is used if the hx711 chip if the hx711 is power_down and the hx711 must be used again.
+   /// This will pull the clock pin low. And the hx711 will power up.
+   /// This command must only be given after a power_down command.
+   /// Please note: after a power down command, and it is given a power up command. The hx711 chip is reset and the gain is 128. 
+   void power_up();
+
+
 
    /// \brief
    /// setup for hx711 chip.

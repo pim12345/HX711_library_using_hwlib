@@ -21,8 +21,9 @@ int main( void ) {
     auto weegschaal = hx711(SCK, DT, 1, 20.64282166);
 
     auto but_reset = hwlib::target::pin_in( hwlib::target::pins::d3 );
-    auto but_switch_to_pounds = hwlib::target::pin_in( hwlib::target::pins::d4 );
-    bool show_pounds = false; //change this to true if by start if the scale must show pounds instead of grams.
+    //auto but_switch_to_power = hwlib::target::pin_in( hwlib::target::pins::d4 );
+
+    //bool power = true; //change this to f if by start if the scale must show pounds instead of grams.
 
     auto scl = hwlib::target::pin_oc( hwlib::target::pins::scl );
     auto sda = hwlib::target::pin_oc( hwlib::target::pins::sda );
@@ -51,25 +52,26 @@ int main( void ) {
 
 
     //hwlib::cout << "pounds: "<< weegschaal.read_pounds() << hwlib::endl;
-    but_switch_to_pounds.refresh();
-    if (but_switch_to_pounds.read() == 0){
-      if(show_pounds == false){
-        show_pounds = true;
-      }
-      else if (show_pounds == true){
-        show_pounds = false;
-      }
+    //but_switch_to_power.refresh();
+    //if (but_switch_to_power.read() == 0){
+    //  if(show_pounds == false){
+    //    show_pounds = true;
+    //  }
+    //  else if (show_pounds == true){
+    //    show_pounds = false;
+    //  }
     hwlib::wait_ms(50);
-    }
-    if (show_pounds == false){
+    //}
+    //if (show_pounds == false){
       hwlib::cout << weegschaal.read() << hwlib::endl;
-      display << '\f' << "Gewicht:" << '\n' << weegschaal.read_avg_10() << " g";
+      display << '\f' << "Gewicht:" << '\n' << weegschaal.read_avg_10() << " g" << '\n';
+      display << weegschaal.read_pounds() << " lb";
       oled.flush();
-    }
-    else if(show_pounds == true){
-      display << '\f' << "Gewicht:" << '\n' << weegschaal.read_pounds() << " lb";
-      oled.flush();
-    }
+    //}
+    //else if(show_pounds == true){
+    //  display << '\f' << "Gewicht:" << '\n' << weegschaal.read_pounds() << " lb";
+    //  oled.flush();
+    //}
     hwlib::wait_ms(20);
 
     }
