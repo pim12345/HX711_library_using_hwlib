@@ -58,7 +58,7 @@ int main( void ) {
       display << weegschaal.read_pounds() << " lb";
       oled.flush();
     }
-    else if(power == false){
+    else if(power == false){ // if button is pressed the hx711 chip will go in sleep modus. for energy saving,
       display << '\f' << "Power" << '\n' << "Down";
       oled.flush();
       weegschaal.power_down();
