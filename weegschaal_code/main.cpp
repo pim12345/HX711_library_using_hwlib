@@ -29,7 +29,7 @@ int main( void ) {
     display << "Please" << '\n' <<  "Wait....";
     oled.flush();
 
-    weegschaal.setup();
+    weegschaal.setup(); //set the correct gain.
     weegschaal.calibration_set(); //set the scale to correct zero point
 
     for (;;){
@@ -41,7 +41,6 @@ int main( void ) {
     }
 
 
-    //hwlib::cout << "pounds: "<< weegschaal.read_pounds() << hwlib::endl;
     but_switch_to_power.refresh();
     if (but_switch_to_power.read() == 0){
       if(power == false){
