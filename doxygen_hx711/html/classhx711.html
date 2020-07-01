@@ -73,15 +73,6 @@ $(function() {
  <a href="classhx711.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="hx711_8hpp_source.html">hx711.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for hx711:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classhx711.png" usemap="#hx711_map" alt=""/>
-  <map id="hx711_map" name="hx711_map">
-<area href="classhx711__display.html" alt="hx711_display" shape="rect" coords="0,56,93,80"/>
-</map>
- </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -103,6 +94,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a28ffa301f710dc6aa955cfb9413e781b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#a28ffa301f710dc6aa955cfb9413e781b">read</a> ()</td></tr>
 <tr class="memdesc:a28ffa301f710dc6aa955cfb9413e781b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read weight function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip (with calibration).  <a href="#a28ffa301f710dc6aa955cfb9413e781b">More...</a><br /></td></tr>
 <tr class="separator:a28ffa301f710dc6aa955cfb9413e781b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada36aacba37e8e1004f8724f521b79e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#ada36aacba37e8e1004f8724f521b79e6">read_eco</a> ()</td></tr>
+<tr class="memdesc:ada36aacba37e8e1004f8724f521b79e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Energy efficent read weight function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip (with calibration).  <a href="#ada36aacba37e8e1004f8724f521b79e6">More...</a><br /></td></tr>
+<tr class="separator:ada36aacba37e8e1004f8724f521b79e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65ee325c8d3032be789824c3444d12a3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhx711.html#a65ee325c8d3032be789824c3444d12a3">read_pounds</a> ()</td></tr>
 <tr class="memdesc:a65ee325c8d3032be789824c3444d12a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read weight in pounds function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip (with calibration).  <a href="#a65ee325c8d3032be789824c3444d12a3">More...</a><br /></td></tr>
 <tr class="separator:a65ee325c8d3032be789824c3444d12a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,7 +221,7 @@ Protected Attributes</h2></td></tr>
 <p>Set scale to zero function(calibration). </p>
 <p>This function will set the correct calibration number. So that the read function will give a correct number back by using the calibration number. This function will NEED to be runned first to ensure accurate measurements. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00067">67</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00068">68</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -279,7 +273,7 @@ Protected Attributes</h2></td></tr>
 <p>Return calibration number used by the read fucntion. </p>
 <p>This function will return in integer the number of the calibration. (calibration_number). </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00173">173</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00201">201</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -301,7 +295,7 @@ Protected Attributes</h2></td></tr>
 <p>Function to get the gain of the the class. </p>
 <p>This function will get the gain of the class </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00179">179</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00207">207</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -367,7 +361,7 @@ Protected Attributes</h2></td></tr>
 <p>Read weight function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip (with calibration). </p>
 <p>This function will read the weight of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip in grams. The <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> will recuire the need of load cells. The gain wil be set in the constructer. this function uses the calibration given in the constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00117">117</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00132">132</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -389,7 +383,7 @@ Protected Attributes</h2></td></tr>
 <p>10 average read weight function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip. </p>
 <p>This function will read ten times the weight of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. And will calulate the average of those ten reads, and return it. The <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> will recuire the need of load cells. The gain wil be set in the constructer. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00139">139</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00167">167</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -411,7 +405,7 @@ Protected Attributes</h2></td></tr>
 <p>100 average read weight function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip. </p>
 <p>This function will read hunderd times the weight of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. And will calulate the average of those hunderd reads, and return it. The <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> will recuire the need of load cells. The gain wil be set in the constructer. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00149">149</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00177">177</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -434,7 +428,29 @@ Protected Attributes</h2></td></tr>
 <p>Calulate the avagere of given amount of reads. </p>
 <p>This function will calulate a average of a given amount of reads given by as a argument. Please note: the time that the function will take will increase with more and more reads. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00159">159</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00187">187</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ada36aacba37e8e1004f8724f521b79e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada36aacba37e8e1004f8724f521b79e6">&#9670;&nbsp;</a></span>read_eco()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hx711::read_eco </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Energy efficent read weight function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip (with calibration). </p>
+<p>This function will read the weight of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip in grams And than will power down the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. The <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> will recuire the need of load cells. After the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> power down and it is later powered up. The gain will be reset to 128. this function uses the calibration given in the constructor. </p>
+
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00144">144</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -478,7 +494,7 @@ Protected Attributes</h2></td></tr>
 <p>Read weight in pounds function for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> class/chip (with calibration). </p>
 <p>This function will read the weight of the <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip in ponds. The <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> will recuire the need of load cells. In this library the gain will always be 128. Please note that a lot of emmbedded systems can't handle float conversions well, PLease note that the weight given is a integer. So it will be no decimal numbers. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00129">129</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00157">157</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -500,7 +516,7 @@ Protected Attributes</h2></td></tr>
 <p>setup for <a class="el" href="classhx711.html" title="HX711 CLASS. ">hx711</a> chip. </p>
 <p>This function will communicate with te chip the first time. Because the chip expect to set a gain, (25 clock). the first time values will not be used. </p>
 
-<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00080">80</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hx711_8cpp_source.html#l00083">83</a> of file <a class="el" href="hx711_8cpp_source.html">hx711.cpp</a>.</p>
 
 </div>
 </div>
@@ -647,7 +663,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 1 2020 13:11:53 for &lt;hx711 library&gt; by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 1 2020 16:25:19 for &lt;hx711 library&gt; by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

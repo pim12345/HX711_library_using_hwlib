@@ -118,7 +118,7 @@ public:
    /// This is used if the hx711 chip if the hx711 is power_down and the hx711 must be used again.
    /// This will pull the clock pin low. And the hx711 will power up.
    /// This command must only be given after a power_down command.
-   /// Please note: after a power down command, and it is given a power up command. The hx711 chip is reset and the gain is 128. 
+   /// Please note: after a power down command, and it is given a power up command. The hx711 chip is reset and the gain is 128.
    void power_up();
 
 
@@ -152,6 +152,17 @@ public:
     int read();
 
 
+
+    /// \brief
+    /// Energy efficent read weight function for hx711 class/chip (with calibration).
+    /// \details
+    /// This function will read the weight of the hx711 chip in grams
+    /// And than will power down the hx711 chip.
+    /// The hx711 will recuire the need of load cells.
+    /// After the hx711 power down and it is later powered up.
+    /// The gain will be reset to 128.
+    /// this function uses the calibration given in the constructor.
+    int read_eco();
 
     /// \brief
     /// Read weight in pounds function for hx711 class/chip (with calibration).
@@ -222,25 +233,5 @@ public:
 
 };
 
-
-class hx711_display : public hx711 {
-private:
-  //hx711 scale;
-  hwlib::pin_oc & scl;
-  hwlib::pin_oc & sda;
-
-public:
-  hx711_display(hwlib::pin_out & SCK, hwlib::pin_in & DT, hwlib::pin_oc & scl, hwlib::pin_oc & sda ):
-  hx711( SCK, DT ),
-  scl( scl ),
-  sda( sda )
-  {}
-
-    void setup(){
-
-    }
-
-
-};
 
 #endif // HX711_HPP
