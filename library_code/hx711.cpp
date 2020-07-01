@@ -102,6 +102,9 @@ void hx711::setup(){
 int hx711::read(){
   int result = read_no_calibration();
   result += calibration_number;
+  if (calibration_weight_number == 0){
+    return result;
+  }
   result = (result / calibration_weight_number);
   return result;
 }
