@@ -68,13 +68,13 @@ int hx711::read_no_calibration(){
 void hx711::calibration_set(){
   // calculate averge of 100 readings and will make the weight of the scale with no weight on it zero.
   int sum = 0;
-  read_no_calibration(); // first value is wird so this is othwise the calibartion is off.
+  read_no_calibration(); // first value is often off the real value so this is othwise the calibartion is off.
   for (int i=1; i<=100; i++){
     sum += read_no_calibration();
   }
   int avg_no_calibration = (sum / 100);
   avg_no_calibration *= -1; // will make the number positive.
-  calibration_number = avg_no_calibration; // The avarege of hunderd read will with no weight on the scale will set the 0 point of the scale.
+  calibration_zero_point_number = avg_no_calibration; // The avarege of hunderd read will with no weight on the scale will set the 0 point of the scale.
 }
 
 
@@ -124,13 +124,14 @@ void hx711::setup(){
   for (int l = 1; l<=gain; l++){
     clock();
   }
+  calibration_set();
 }
 
 
 
 int hx711::read(){
   int result = read_no_calibration();
-  result += calibration_number;
+  result += calibration_zero_point_number;
   if (calibration_weight_number == 0){
     return result;
   }
@@ -143,7 +144,7 @@ int hx711::read(){
 int hx711::read_eco(){
   int result = read_no_calibration();
   power_down(); // the clock pin pulled high. Because after 60 microseconds the hx711 will go to sleep and it will wake up after the clock pin is pulled low.
-  result += calibration_number;
+  result += calibration_zero_point_number;
   if (calibration_weight_number == 0){ // if calibration number is not given it wil give the result back. if the calibration weight number is not given, the result will not be accurate.
     return result;
   }
@@ -155,7 +156,11 @@ int hx711::read_eco(){
 
 int hx711::read_pounds(){ //result is by integer accurate beacause of the arduino can not handle good float values.
   int result = read_no_calibration();
-  result += calibration_number;
+  result += calibration_zero_point_number; //set reading to cancle out zero point
+  if (calibration_weight_number == 0){ // if calibration number is not given it wil give the result back. if the calibration weight number is not given, the result will not be accurate.
+    result *= 0.0022046; // 1 gram is 0.0022046 pounds.
+    return result;
+  }
   result = (result / calibration_weight_number);
   result *= 0.0022046; // 1 gram is 0.0022046 pounds.
   return result;
@@ -184,10 +189,10 @@ int hx711::read_avg_100(){
 
 
 int hx711::read_avg_variable(int amount){
-  // This function will calulate a averagere of given of read commando
+  // This function will calulate a averagere of given of read command.
   int sum = 0;
-  if (amount < 0){
-    amount = 0;
+  if (amount <= 0){
+    return 0;
   }
   for (int i=1; i<=amount; i++){
     sum+=read();
@@ -197,8 +202,8 @@ int hx711::read_avg_variable(int amount){
 
 
 
-int hx711::get_calibration_number(){
-  return calibration_number;
+int hx711::get_calibration_zero_point_number(){
+  return calibration_zero_point_number;
 }
 
 

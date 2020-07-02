@@ -62,22 +62,23 @@ protected:
 
 
   /// \brief
-  /// calibration number(for scale to set to zero)
+  /// calibration number(for scale to set to zero point)
   /// \details
   /// This number is the calibration number.
   /// If the function: calibration_set is runned. the calibration number will bring the scale to the correct zero point.
   /// The function: calibration_set must be runned in the main of the program en there must be no weight on the scale by calibration.
   /// will be zero if the function: calibration_set is not runned.
-  int calibration_number = 0;
+  int calibration_zero_point_number = 0;
 
 
 
   /// \brief
-  /// weight calibration number
+  /// weight calibration number(for accurate weight in grams)
   /// \details
   /// This number is used for calibration for accurate weight calculation.
   /// To get this number you need to place a object of a known weight on your scale.
-  /// and read the value of the read. And divide by the known weight of the value and set the calibration_weight_number in de intiizer list
+  /// And read the value of the read. And divide by the known weight of the value and set the calibration_weight_number in de intiizer list.
+  /// Or the calibration software must be runned.
   int calibration_weight_number;
 
 
@@ -94,7 +95,7 @@ public:
   SCK( SCK ),
   DT( DT ),
   gain( gain ),
-  calibration_number( 0 ),// calibration level will be set to right number after calibration_set function is runned.
+  calibration_zero_point_number( 0 ),// calibration_zero_point_number will be set to right number after calibration_set function is runned. or the setup function.
   calibration_weight_number( calibration_weight_number )
   {}
 
@@ -127,7 +128,9 @@ public:
    /// setup for hx711 chip.
    /// \details
    /// This function will communicate with te chip the first time. Because the chip expect to set a gain,
-   /// (25 clock). the first time values will not be used.
+   /// The first time values will not be used. Because of experience the fist values are not very accurate.
+   /// The setup fucntion will also run the set calibration function to set the scale to the correct zero point
+   /// It is import that there is no weight on the scale by the setup. Otherwise the calibration is not accurate.
     void setup();
 
 
@@ -203,15 +206,16 @@ public:
     /// \details
     /// This function will calulate a average of a given amount of reads given by as a argument.
     /// Please note: the time that the function will take will increase with more and more reads.
+    /// if a amount is zero or negaitive the function will give zero back. 
     int read_avg_variable(int amount);
 
 
 
    /// \brief
-   /// Return calibration number used by the read fucntion.
+   /// Return calibration_zero_point_number used by the read fucntion.
    /// \details
    /// This function will return in integer the number of the calibration. (calibration_number).
-    int get_calibration_number();
+    int get_calibration_zero_point_number();
 
 
 

@@ -29,13 +29,13 @@ int main( void ) {
     display << "Please" << '\n' <<  "Wait....";
     oled.flush();
 
-    weegschaal.setup(); //set the correct gain.
-    weegschaal.calibration_set(); //set the scale to correct zero point
+    weegschaal.setup(); //set the correct gain and set the scale to correct zero point.
+    //weegschaal.calibration_set();
 
     for (;;){
     but_reset.refresh(); //refresh if button is pressed. If this function is not runned. The function will get the bufferd value of the button.
     if (but_reset.read() == 0){ // if button is pressed. The scale wil reset itself. (set weight to zero.).
-      display << '\f' << "Calibrating" << '\n' << "Please " << '\n' << "Wait...";
+      display << '\f' << "Calibrating" << '\n' << "Please " << '\n' << "Wait....";
       oled.flush();
       weegschaal.calibration_set(); // reset current weight on scale to zero point.
     }
