@@ -17,8 +17,7 @@ HEADERS := ../library_code/hx711.hpp
 # other places to look for files for this project
 SEARCH  :=
 
-# set BMPTK to the next higher directory and defer to the Makefile.due
 # set RELATIVE to the next higher directory
-# and defer to the Makefile.* there
+# and defer to the appropriate Makefile.* there
 RELATIVE := ..
-include $(RELATIVE)/Makefile.native
+include $(RELATIVE)/Makefile.due

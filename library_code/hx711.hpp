@@ -167,6 +167,8 @@ public:
     /// this function uses the calibration given in the constructor.
     int read_eco();
 
+
+
     /// \brief
     /// Read weight in pounds function for hx711 class/chip (with calibration).
     /// \details
@@ -206,7 +208,7 @@ public:
     /// \details
     /// This function will calulate a average of a given amount of reads given by as a argument.
     /// Please note: the time that the function will take will increase with more and more reads.
-    /// if a amount is zero or negaitive the function will give zero back. 
+    /// if a amount is zero or negaitive the function will give zero back.
     int read_avg_variable(int amount);
 
 
