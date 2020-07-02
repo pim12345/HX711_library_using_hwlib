@@ -45,9 +45,8 @@ int main( void ) {
 
     auto weegschaal = hx711(SCK, DT, 1);
 
-    weegschaal.setup();
+    weegschaal.setup(); // to set the gain and set the correct zeropoint.
 
-    weegschaal.calibration_set();
 
     char ans;
     hwlib::cout << "Please put a known weight on the scale. If known weight is placed on the scale, type: y in the console." << hwlib::endl;
