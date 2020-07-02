@@ -13,7 +13,7 @@ by using the library it is important to run first the setup code and after the c
 This library/democode use the hwlib library from Wouter van Ooijen (wouter@voti.nl) and uses the cmath library for power calulations
 
 the demo hardware uses the hx711 with 4 times 3-wire load cells. the tutorial for connecting is used this:https://circuitjournal.com/50kg-load-cells-with-HX711 by Indrek Luuk
-and the 3d-printed parts i used are made by patrick3345(under the Creative Commons - Attribution license.) From thiverse, link: https://www.thingiverse.com/thing:2624188
+and the 3d-printed parts i used are made by patrick3345(under the Creative Commons - Attribution license.) From thingiverse, link: https://www.thingiverse.com/thing:2624188
 
 
 
