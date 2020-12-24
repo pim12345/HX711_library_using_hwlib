@@ -9,15 +9,15 @@
 #############################################################################
 
 # source files in this project (main.cpp is automatically assumed)
-SOURCES := ../library_code/hx711.cpp
+SOURCES := hx711.cpp
 
 # header files in this project
-HEADERS := ../library_code/hx711.hpp
+HEADERS := hx711.hpp
 
 # other places to look for files for this project
-SEARCH  :=
+SEARCH  := ../library_code/
 
 # set RELATIVE to the next higher directory
 # and defer to the appropriate Makefile.* there
-RELATIVE := ..
+RELATIVE := $(RELATIVE)../..
 include $(RELATIVE)/Makefile.due

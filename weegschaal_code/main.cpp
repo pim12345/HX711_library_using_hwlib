@@ -1,5 +1,5 @@
 #include "hwlib.hpp"
-#include "../library_code/hx711.hpp"
+#include <hx711.hpp>
 
 
 int main( void ) {
