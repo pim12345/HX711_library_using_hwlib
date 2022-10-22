@@ -9,13 +9,13 @@
 #############################################################################
 
 # source files in this project (main.cpp is automatically assumed)
-SOURCES := hx711.cpp
+SOURCES := library_code/hx711.cpp
 
 # header files in this project
-HEADERS := hx711.hpp
+HEADERS := library_code/hx711.hpp
 
 # other places to look for files for this project
-SEARCH  := ../library_code/
+SEARCH  := 
 
 # set RELATIVE to the next higher directory
 # and defer to the appropriate Makefile.* there
